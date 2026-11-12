@@ -1,0 +1,6 @@
+# Local tool settings (never commit)
+.claude/
+CLAUDE.md
+AGENTS.md
+.vercel
+.DS_Store
