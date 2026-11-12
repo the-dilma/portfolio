@@ -7,62 +7,141 @@
 <meta name="description" content="Amasha Dilmani, Software Engineering undergraduate (University of Plymouth / NSBM). Research in edge AI, AI safety in automotive software and low-power emergency communication.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#1b1f24; --muted:#5b6470; --line:#e4e7eb; --bg:#fbfaf7; --card:#ffffff;
-    --accent:#0f6b5c; --accent-soft:#e6f2ef;
+    --ink:#14202b; --muted:#56616d; --line:#e3e6ea; --bg:#f7f6f2; --card:#ffffff;
+    --teal:#0d7a68; --teal-soft:#e2f3ef;
+    --indigo:#4b47d6; --indigo-soft:#ebeafd;
+    --coral:#e2603c; --coral-soft:#fdece6;
+    --amber:#d9930d; --amber-soft:#fdf3dc;
+    --hero-1:#0b1f2c; --hero-2:#0d4f4a; --hero-3:#2b2a7a;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
-  a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent}
-  a:hover{border-bottom-color:var(--accent)}
-  .wrap{max-width:860px;margin:0 auto;padding:0 24px}
-  nav{position:sticky;top:0;background:rgba(251,250,247,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);z-index:5}
-  nav .wrap{display:flex;gap:22px;align-items:center;height:56px;overflow-x:auto;white-space:nowrap}
-  nav .brand{font-family:Fraunces,Georgia,serif;font-weight:600;color:var(--ink);margin-right:auto}
-  nav a{color:var(--muted);font-size:14px}
-  header{padding:72px 0 40px}
-  h1{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(34px,5vw,48px);line-height:1.1;margin:0 0 12px;letter-spacing:-.01em}
-  .tagline{font-size:18px;color:var(--muted);margin:0 0 22px;max-width:640px}
+  a{color:var(--teal);text-decoration:none;border-bottom:1px solid transparent}
+  a:hover{border-bottom-color:currentColor}
+  img{max-width:100%;display:block}
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px}
+
+  /* Nav */
+  nav{position:sticky;top:0;background:rgba(11,31,44,.94);backdrop-filter:blur(8px);z-index:10}
+  nav .wrap{display:flex;gap:22px;align-items:center;height:58px;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+  nav .brand{font-family:Fraunces,Georgia,serif;font-weight:600;color:#fff;margin-right:auto;display:flex;align-items:center;gap:10px}
+  nav .brand::before{content:"";width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,#3fd1b3,var(--coral))}
+  nav a{color:#c4d0d9;font-size:14px}
+  nav a:hover{color:#fff;border-bottom-color:transparent}
+
+  /* Hero */
+  .hero{position:relative;overflow:hidden;color:#fff;
+    background:
+      radial-gradient(600px 300px at 85% 10%,rgba(226,96,60,.35),transparent 70%),
+      radial-gradient(500px 320px at 10% 100%,rgba(75,71,214,.45),transparent 70%),
+      linear-gradient(135deg,var(--hero-1),var(--hero-2) 55%,var(--hero-3));}
+  .hero::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.09) 1px,transparent 1px);background-size:22px 22px;pointer-events:none}
+  .hero .wrap{position:relative;z-index:1;padding-top:84px;padding-bottom:72px}
+  .eyebrow{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+  .hero .eyebrow{color:#8ce8d4;margin-bottom:14px}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:clamp(38px,6vw,60px);line-height:1.05;margin:0 0 16px;letter-spacing:-.015em}
+  h1 span{background:linear-gradient(90deg,#8ce8d4,#ffb59c);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .tagline{font-size:18px;color:#d5e0e7;margin:0 0 28px;max-width:660px}
   .links{display:flex;flex-wrap:wrap;gap:10px}
-  .btn{display:inline-block;padding:8px 14px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);font-size:14px;font-weight:500}
-  .btn:hover{border-color:var(--accent);color:var(--accent)}
-  .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
-  .btn.primary:hover{background:#0b5549;color:#fff}
-  section{padding:36px 0;border-top:1px solid var(--line)}
-  h2{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:26px;margin:0 0 20px}
-  .interests{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
-  .chip{background:var(--accent-soft);color:var(--accent);font-size:13px;font-weight:500;padding:4px 10px;border-radius:999px}
-  .item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:14px}
+  .btn{display:inline-block;padding:10px 18px;border-radius:10px;font-size:14px;font-weight:600;border:1px solid rgba(255,255,255,.3);color:#fff}
+  .btn:hover{background:rgba(255,255,255,.1);border-color:#fff}
+  .btn.primary{background:var(--coral);border-color:var(--coral)}
+  .btn.primary:hover{background:#c94f2d;border-color:#c94f2d}
+  .hero .interests{margin-top:30px}
+
+  /* Sections */
+  section{padding:56px 0}
+  section + section{border-top:1px solid var(--line)}
+  .sec-head{margin-bottom:26px}
+  .sec-head .eyebrow{color:var(--teal);margin-bottom:6px}
+  #projects .sec-head .eyebrow{color:var(--indigo)}
+  #design .sec-head .eyebrow{color:var(--coral)}
+  #education .sec-head .eyebrow,#skills .sec-head .eyebrow{color:var(--amber)}
+  h2{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:30px;margin:0;line-height:1.2}
+  .sec-head p{margin:8px 0 0;color:var(--muted);max-width:640px}
+
+  .interests{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-size:13px;font-weight:500;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.22)}
+
+  /* Cards */
+  .item{position:relative;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:16px;box-shadow:0 1px 2px rgba(20,32,43,.04);transition:transform .15s ease,box-shadow .15s ease}
+  .item:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(20,32,43,.08)}
+  #research .item{border-left:5px solid var(--teal)}
+  #research .item.feature{border-left-color:var(--coral);background:linear-gradient(180deg,#fff, #fffaf7)}
   .item h3{font-size:17px;line-height:1.4;margin:0 0 4px;font-weight:600}
   .meta{font-size:14px;color:var(--muted);margin:0 0 10px}
-  .status{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.02em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+  .status{display:inline-block;font-size:11.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:3px 10px;border-radius:999px;margin-bottom:10px;background:var(--teal-soft);color:var(--teal)}
+  .item.feature .status{background:var(--coral-soft);color:#b8452a}
   .item p{margin:0 0 8px}
   .role{font-size:15px}
   .role b{font-weight:600}
-  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-  .tag{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:2px 8px}
-  .itemlinks{margin-top:10px;font-size:14px;display:flex;gap:16px;flex-wrap:wrap}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-  .grid .item{margin:0}
-  .edu{display:grid;grid-template-columns:150px 1fr;gap:6px 18px}
-  .edu > div{margin-bottom:12px}
-  .edu .when{color:var(--muted);font-size:14px;padding-top:2px}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+  .tag{font-size:12px;font-weight:500;border-radius:6px;padding:2px 9px;background:var(--teal-soft);color:var(--teal)}
+  .itemlinks{margin-top:12px;font-size:14px;font-weight:600;display:flex;gap:16px;flex-wrap:wrap}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+  .grid .item{margin:0;padding-top:28px;overflow:hidden}
+  .grid .item::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:var(--c,var(--indigo))}
+  .grid .item .tag{background:var(--cs,var(--indigo-soft));color:var(--c,var(--indigo))}
+  .grid .item .itemlinks a{color:var(--c,var(--indigo))}
+  .c-indigo{--c:var(--indigo);--cs:var(--indigo-soft)}
+  .c-coral{--c:var(--coral);--cs:var(--coral-soft)}
+  .c-teal{--c:var(--teal);--cs:var(--teal-soft)}
+  .c-amber{--c:#b47708;--cs:var(--amber-soft)}
+
+  /* Design gallery */
+  .client{margin-bottom:34px}
+  .client:last-child{margin-bottom:0}
+  .client-head{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 14px;margin-bottom:14px}
+  .client-head h3{font-family:Fraunces,Georgia,serif;font-size:22px;font-weight:600;margin:0}
+  .client-head span{font-size:14px;color:var(--muted)}
+  .client-head a{font-size:14px;font-weight:600;color:var(--coral)}
+  .gallery{columns:3 220px;column-gap:14px}
+  .gallery button{all:unset;cursor:zoom-in;display:block;break-inside:avoid;margin:0 0 14px;border-radius:12px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 1px 2px rgba(20,32,43,.05);transition:transform .15s ease,box-shadow .15s ease}
+  .gallery button:hover,.gallery button:focus-visible{transform:translateY(-2px);box-shadow:0 12px 26px rgba(20,32,43,.12)}
+  .gallery button:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
+  .gallery img{width:100%;height:auto}
+  .gallery figcaption{font-size:13px;color:var(--muted);padding:8px 12px 10px}
+
+  dialog.lightbox{border:0;padding:0;background:transparent;max-width:min(92vw,1100px);max-height:92vh}
+  dialog.lightbox::backdrop{background:rgba(8,16,24,.86)}
+  dialog.lightbox img{max-width:100%;max-height:84vh;width:auto;margin:0 auto;border-radius:10px}
+  dialog.lightbox p{color:#e6edf2;text-align:center;margin:10px 0 0;font-size:14px}
+  dialog.lightbox .close{position:fixed;top:14px;right:18px;background:rgba(255,255,255,.14);color:#fff;border:0;border-radius:50%;width:40px;height:40px;font-size:22px;cursor:pointer}
+
+  /* Education & skills */
+  .edu{display:grid;grid-template-columns:160px 1fr;gap:6px 18px}
+  .edu > div{margin-bottom:14px}
+  .edu .when{font-size:14px;font-weight:600;color:#a06c06;padding-top:2px}
   .edu b{font-weight:600}
   .sub{color:var(--muted);font-size:15px}
-  .skills{margin:0}
-  .skills dt{font-weight:600;font-size:14px;margin-top:12px}
-  .skills dt:first-child{margin-top:0}
-  .skills dd{margin:2px 0 0;color:var(--muted)}
-  footer{padding:36px 0 56px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+  .skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:0}
+  .skills > div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .skills dt{font-weight:600;font-size:14px;margin:0 0 4px;color:var(--ink)}
+  .skills dd{margin:0;color:var(--muted);font-size:15px}
+
+  /* Contact & footer */
+  .contact{background:linear-gradient(135deg,var(--hero-2),var(--hero-3));color:#fff;border-radius:18px;padding:34px 30px;text-align:left}
+  .contact h2{color:#fff}
+  .contact p{color:#d5e0e7;margin:8px 0 20px}
+  footer{padding:30px 0 48px;color:var(--muted);font-size:14px}
+
   @media (max-width:560px){
     .wrap{padding:0 16px}
-    header{padding:48px 0 28px}
+    .hero .wrap{padding-top:56px;padding-bottom:52px}
+    section{padding:44px 0}
+    h2{font-size:26px}
     .edu{grid-template-columns:1fr;gap:0}
     .edu .when{padding-top:6px;margin-bottom:0}
+    .gallery{columns:2 140px;column-gap:10px}
+    .gallery button{margin-bottom:10px}
+    .contact{padding:26px 20px}
   }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
@@ -72,40 +151,51 @@
     <span class="brand">Amasha Dilmani</span>
     <a href="#research">Research</a>
     <a href="#projects">Projects</a>
+    <a href="#design">Design</a>
     <a href="#education">Education</a>
     <a href="#skills">Skills</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
 
-<main class="wrap">
-
-  <header>
-    <h1>Amasha Dilmani</h1>
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Software Engineering · Research</span>
+    <h1>Hi, I'm <span>Amasha Dilmani</span></h1>
     <p class="tagline">Third-year Software Engineering undergraduate at the University of Plymouth (NSBM Green University, Sri Lanka), working on research in edge AI, AI safety in automotive software, and low-power emergency communication.</p>
     <div class="links">
-      <a class="btn primary" href="mailto:dilmanidzilva@gmail.com">Email</a>
-      <a class="btn" href="https://github.com/the-dilma">GitHub</a>
+      <a class="btn primary" href="mailto:dilmanidzilva@gmail.com">Email me</a>
+      <a class="btn" href="#research">See my research</a>
     </div>
-  </header>
-
-  <section id="about">
-    <h2>About</h2>
-    <p>I build systems that have to work under real constraints: limited power, no internet, or zero tolerance for failure. My work so far spans IoT networking for disaster-prone communities, the safety of machine-learning components in vehicles, and keeping AI models reliable on small edge devices.</p>
-    <p>I am interested in how intelligent systems can be made reliable and trustworthy, and I want to grow as a researcher where computation meets real-world systems.</p>
     <div class="interests">
       <span class="chip">Machine learning</span>
       <span class="chip">Edge AI</span>
       <span class="chip">AI safety</span>
       <span class="chip">IoT &amp; LoRa networks</span>
       <span class="chip">Safety-critical software</span>
+      <span class="chip">UI &amp; graphic design</span>
     </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section id="about">
+    <div class="sec-head">
+      <span class="eyebrow">About</span>
+      <h2>Building systems that work under real constraints</h2>
+    </div>
+    <p>I build systems that have to work under real constraints: limited power, no internet, or zero tolerance for failure. My work so far spans IoT networking for disaster-prone communities, the safety of machine-learning components in vehicles, and keeping AI models reliable on small edge devices.</p>
+    <p>I am interested in how intelligent systems can be made reliable and trustworthy, and I want to grow as a researcher where computation meets real-world systems. Alongside engineering, I design brand material and websites for real clients.</p>
   </section>
 
   <section id="research">
-    <h2>Research</h2>
+    <div class="sec-head">
+      <span class="eyebrow">Research</span>
+      <h2>Papers &amp; research projects</h2>
+    </div>
 
-    <div class="item">
+    <div class="item feature">
       <span class="status">Final-year project · 2026 – present</span>
       <h3>A Lightweight Model-Behavior-Aware Update Validation and Rollback Framework for Resource-Constrained Edge AI Devices</h3>
       <p class="meta"><b>P. H. A. Dilmani</b>, supervised by D. Rajasinghe</p>
@@ -142,19 +232,22 @@
   </section>
 
   <section id="projects">
-    <h2>Projects</h2>
+    <div class="sec-head">
+      <span class="eyebrow">Projects</span>
+      <h2>Things I've built</h2>
+    </div>
     <div class="grid">
 
-      <div class="item">
+      <div class="item c-indigo">
         <h3>Worksy</h3>
         <p class="meta">Team of 7 · full-stack task &amp; board management app</p>
         <p>A collaborative platform for organizing projects into workspaces and boards, with Kanban task management, team invitations, a deadline calendar and notifications.</p>
         <p class="role"><b>My role:</b> owned Board Management and Board Members end to end: the MongoDB models, the Express service and controller, and the React screens.</p>
         <div class="tags"><span class="tag">React</span><span class="tag">Vite</span><span class="tag">Express.js</span><span class="tag">MongoDB</span><span class="tag">Mongoose</span></div>
-        <div class="itemlinks"><a href="https://github.com/the-dilma/worksy">GitHub</a></div>
+        <div class="itemlinks"><a href="https://github.com/the-dilma/worksy">View code →</a></div>
       </div>
 
-      <div class="item">
+      <div class="item c-teal">
         <h3>Project Nightlock</h3>
         <p class="meta">NASA Space Apps Challenge 2026 · team</p>
         <p>A web app idea in the spirit of the blink comparator that found Pluto. It compares two SPHEREx infrared images of the same patch of sky, taken months apart, so anyone can spot what moved: asteroids, comets or brown dwarfs.</p>
@@ -162,25 +255,69 @@
         <div class="tags"><span class="tag">SPHEREx</span><span class="tag">FITS data</span><span class="tag">Astronomy</span><span class="tag">Web</span></div>
       </div>
 
-      <div class="item">
+      <div class="item c-amber">
         <h3>BuildMate</h3>
         <p class="meta">Solo project · planning &amp; design</p>
         <p>A mobile marketplace that connects clients with masons and other tradespeople, with voice-first job posts and profiles in Sinhala and Tamil. It started as a hackathon proposal (hackX) and I am now developing it on my own.</p>
         <div class="tags"><span class="tag">Flutter</span><span class="tag">Firebase</span><span class="tag">Google Maps</span></div>
       </div>
 
-      <div class="item">
+      <div class="item c-coral">
         <h3>Client websites</h3>
         <p class="meta">Freelance</p>
-        <p>Designing and building websites for local businesses, working directly with the owners from brief to delivery: Hotel Umaya (website and business card) and Salon Surangi (in progress).</p>
-        <div class="itemlinks"><a href="https://hotel-umaya.vercel.app">Hotel Umaya</a></div>
+        <p>Designing and building websites for local businesses, working directly with the owners from brief to delivery: Hotel Umaya and Salon Surangi (in progress).</p>
+        <div class="itemlinks"><a href="https://hotel-umaya.vercel.app">Visit Hotel Umaya →</a></div>
       </div>
 
     </div>
   </section>
 
+  <section id="design">
+    <div class="sec-head">
+      <span class="eyebrow">Design</span>
+      <h2>Brand &amp; graphic design for real clients</h2>
+      <p>Logos, business cards, social media posts and print material, designed with and for local business owners. Click any design to see it larger.</p>
+    </div>
+
+    <div class="client">
+      <div class="client-head">
+        <h3>Hotel Umaya</h3>
+        <span>Wedding &amp; reception hall · brand identity, print and social media</span>
+        <a href="https://hotel-umaya.vercel.app">Website →</a>
+      </div>
+      <div class="gallery">
+        <button type="button"><figure style="margin:0"><img src="images/design/umaya-logo.jpg" alt="Hotel Umaya logo" loading="lazy" width="1400" height="993"><figcaption>Logo</figcaption></figure></button>
+        <button type="button"><figure style="margin:0"><img src="images/design/umaya-business-card.jpg" alt="Hotel Umaya business card, front and back" loading="lazy" width="1400" height="824"><figcaption>Business card</figcaption></figure></button>
+        <button type="button"><figure style="margin:0"><img src="images/design/umaya-thank-you-card.jpg" alt="Hotel Umaya thank-you card for wedding couples" loading="lazy" width="1400" height="933"><figcaption>Thank-you card for couples</figcaption></figure></button>
+        <button type="button"><figure style="margin:0"><img src="images/design/umaya-thanksgiving-post.jpg" alt="Hotel Umaya thanksgiving social media post in Sinhala" loading="lazy" width="933" height="1400"><figcaption>Thanksgiving social media post</figcaption></figure></button>
+      </div>
+    </div>
+
+    <div class="client">
+      <div class="client-head">
+        <h3>Salon Surangi &amp; Academy</h3>
+        <span>Beauty salon &amp; bridal academy · logo, cards and social media campaign</span>
+      </div>
+      <div class="gallery">
+        <button type="button"><figure style="margin:0"><img src="images/design/surangi-logo.jpg" alt="Salon Surangi and Academy logo" loading="lazy" width="500" height="500"><figcaption>Logo</figcaption></figure></button>
+        <button type="button"><figure style="margin:0"><img src="images/design/surangi-business-card-front.jpg" alt="Salon Surangi business card, front" loading="lazy" width="1050" height="600"><figcaption>Business card (front)</figcaption></figure></button>
+        <button type="button"><figure style="margin:0"><img src="images/design/surangi-business-card-back.jpg" alt="Salon Surangi business card, back with QR code" loading="lazy" width="1050" height="600"><figcaption>Business card (back)</figcaption></figure></button>
+        <button type="button"><figure style="margin:0"><img src="images/design/surangi-bridal-workshop.jpg" alt="Bridal dressing workshop poster" loading="lazy" width="1120" height="1400"><figcaption>Bridal workshop poster</figcaption></figure></button>
+        <button type="button"><figure style="margin:0"><img src="images/design/surangi-opening-post.jpg" alt="Opening soon social media post" loading="lazy" width="990" height="1400"><figcaption>Opening announcement</figcaption></figure></button>
+        <button type="button"><figure style="margin:0"><img src="images/design/surangi-hydra-facial.jpg" alt="Hydra facial promotion post" loading="lazy" width="990" height="1400"><figcaption>Hydra facial promotion</figcaption></figure></button>
+        <button type="button"><figure style="margin:0"><img src="images/design/surangi-bridal-services.jpg" alt="Bridal beauty and dress making services post" loading="lazy" width="990" height="1400"><figcaption>Bridal services</figcaption></figure></button>
+        <button type="button"><figure style="margin:0"><img src="images/design/surangi-hair-studio.jpg" alt="Hair studio services post" loading="lazy" width="990" height="1400"><figcaption>Hair studio services</figcaption></figure></button>
+        <button type="button"><figure style="margin:0"><img src="images/design/surangi-skincare.jpg" alt="Facial and skin care services post" loading="lazy" width="990" height="1400"><figcaption>Facial &amp; skin care</figcaption></figure></button>
+        <button type="button"><figure style="margin:0"><img src="images/design/surangi-beauty-care.jpg" alt="Beauty care services post" loading="lazy" width="990" height="1400"><figcaption>Beauty care services</figcaption></figure></button>
+      </div>
+    </div>
+  </section>
+
   <section id="education">
-    <h2>Education</h2>
+    <div class="sec-head">
+      <span class="eyebrow">Education</span>
+      <h2>Where I study</h2>
+    </div>
     <div class="edu">
       <div class="when">2025 – 2027 (expected)</div>
       <div>
@@ -194,24 +331,29 @@
   </section>
 
   <section id="skills">
-    <h2>Skills &amp; activities</h2>
+    <div class="sec-head">
+      <span class="eyebrow">Skills &amp; activities</span>
+      <h2>What I work with</h2>
+    </div>
     <dl class="skills">
-      <dt>Programming</dt><dd>Python, JavaScript, SQL / SQL Server, HTML &amp; CSS, Java (basic), Dart / Flutter (basic)</dd>
-      <dt>ML &amp; data</dt><dd>NumPy, Jupyter, Google Colab</dd>
-      <dt>Web</dt><dd>React, Express.js, MongoDB</dd>
-      <dt>Systems &amp; tools</dt><dd>Raspberry Pi, WebSockets, Git &amp; GitHub, Docker (basic), LaTeX / Overleaf</dd>
-      <dt>Languages</dt><dd>Sinhala (native), English (fluent), German (basic, preparing for A1)</dd>
-      <dt>Events &amp; hackathons</dt><dd>NASA Space Apps Challenge 2026 (participant), PLYMHACK 2026 (volunteer), ICACT 2025 international conference (attended), IEEE technical workshops</dd>
-      <dt>Communities</dt><dd>IEEE student member; subcommittee member of the CSSL NSBM GenZ Chapter and Hackathon Hub NSBM, organizing student tech events and hackathons</dd>
-      <dt>Teaching</dt><dd>Volunteer ICT tutor for G.C.E. O/L students (2022 – 2023)</dd>
+      <div><dt>Programming</dt><dd>Python, JavaScript, SQL / SQL Server, HTML &amp; CSS, Java (basic), Dart / Flutter (basic)</dd></div>
+      <div><dt>ML &amp; data</dt><dd>NumPy, Jupyter, Google Colab</dd></div>
+      <div><dt>Web</dt><dd>React, Express.js, MongoDB</dd></div>
+      <div><dt>Systems &amp; tools</dt><dd>Raspberry Pi, WebSockets, Git &amp; GitHub, Docker (basic), LaTeX / Overleaf</dd></div>
+      <div><dt>Languages</dt><dd>Sinhala (native), English (fluent), German (basic, preparing for A1)</dd></div>
+      <div><dt>Events &amp; hackathons</dt><dd>NASA Space Apps Challenge 2026 (participant), PLYMHACK 2026 (volunteer), ICACT 2025 international conference (attended), IEEE technical workshops</dd></div>
+      <div><dt>Communities</dt><dd>IEEE student member; subcommittee member of the CSSL NSBM GenZ Chapter and Hackathon Hub NSBM, organizing student tech events and hackathons</dd></div>
+      <div><dt>Teaching</dt><dd>Volunteer ICT tutor for G.C.E. O/L students (2022 – 2023)</dd></div>
     </dl>
   </section>
 
   <section id="contact">
-    <h2>Contact</h2>
-    <p>I am happy to talk about research, collaborations or internships.<br>
-      <a href="mailto:dilmanidzilva@gmail.com">dilmanidzilva@gmail.com</a> ·
-      <a href="https://github.com/the-dilma">GitHub</a></p>
+    <div class="contact">
+      <span class="eyebrow" style="color:#8ce8d4">Contact</span>
+      <h2>Let's talk</h2>
+      <p>I am happy to talk about research, collaborations or internships.</p>
+      <a class="btn primary" href="mailto:dilmanidzilva@gmail.com">dilmanidzilva@gmail.com</a>
+    </div>
   </section>
 
 </main>
@@ -219,6 +361,30 @@
 <footer>
   <div class="wrap">© 2026 Amasha Dilmani · Last updated November 2026</div>
 </footer>
+
+<dialog class="lightbox" id="lightbox" aria-label="Design preview">
+  <button class="close" type="button" aria-label="Close">×</button>
+  <img alt="">
+  <p></p>
+</dialog>
+
+<script>
+  (function(){
+    var box = document.getElementById('lightbox');
+    if (!box || !box.showModal) return;
+    var img = box.querySelector('img'), cap = box.querySelector('p');
+    document.querySelectorAll('.gallery button').forEach(function(b){
+      b.addEventListener('click', function(){
+        var src = b.querySelector('img');
+        img.src = src.src; img.alt = src.alt;
+        cap.textContent = b.querySelector('figcaption').textContent;
+        box.showModal();
+      });
+    });
+    box.querySelector('.close').addEventListener('click', function(){ box.close(); });
+    box.addEventListener('click', function(e){ if (e.target === box) box.close(); });
+  })();
+</script>
 
 </body>
 </html>
