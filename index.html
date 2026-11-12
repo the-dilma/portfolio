@@ -107,6 +107,17 @@
   .gallery img{width:100%;height:auto}
   .gallery figcaption{font-size:13px;color:var(--muted);padding:8px 12px 10px}
 
+  .shots{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0 4px}
+  .shots button{all:unset;cursor:zoom-in;display:block;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:#fff;transition:transform .15s ease,box-shadow .15s ease}
+  .shots button:hover,.shots button:focus-visible{transform:translateY(-2px);box-shadow:0 10px 22px rgba(20,32,43,.12)}
+  .shots button:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+  .shots img{width:100%;height:110px;object-fit:cover}
+  .shots span{display:block;font-size:12px;color:var(--muted);padding:6px 8px}
+  .shots img.top{object-position:top}
+  .gallery.ui{columns:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+  .gallery.ui button{margin:0}
+  .ui-note{font-size:14px;color:var(--muted);margin:-4px 0 14px}
+
   dialog.lightbox{border:0;padding:0;background:transparent;max-width:min(92vw,1100px);max-height:92vh}
   dialog.lightbox::backdrop{background:rgba(8,16,24,.86)}
   dialog.lightbox img{max-width:100%;max-height:84vh;width:auto;margin:0 auto;border-radius:10px}
@@ -139,6 +150,7 @@
     .edu .when{padding-top:6px;margin-bottom:0}
     .gallery{columns:2 140px;column-gap:10px}
     .gallery button{margin-bottom:10px}
+    .shots{grid-template-columns:repeat(2,1fr)}
     .contact{padding:26px 20px}
   }
   @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
@@ -209,9 +221,15 @@
       <span class="status">In preparation · ICARC 2026</span>
       <h3>Off-Grid LoRa-Based Emergency Messaging System for Disaster-Prone Communities in Sri Lanka</h3>
       <p class="meta"><b>P. H. A. Dilmani</b>, J. A. S. V. Jayasundara, S. K. Upawansa, D. Rajasinghe</p>
-      <p>An emergency messaging system that keeps communities connected when mobile networks and the internet fail, using long-range, low-power LoRa radio links. Messages travel over LoRa to a Raspberry Pi gateway and are then forwarded to a server for coordination.</p>
+      <p>An emergency messaging system that keeps communities connected when mobile networks and the internet fail, using long-range, low-power LoRa radio links. Each sender node pairs an ESP32 with a LoRa radio and a GPS module, and people type messages in an Android app over Bluetooth. Messages travel over LoRa to a Raspberry Pi gateway and are then forwarded to a server for coordination.</p>
       <p class="role"><b>My role:</b> built the WebSocket gateway that forwards LoRa messages from the Raspberry Pi to the central server in real time (serial data handling, hardware–software integration), and co-wrote the paper. The project was among the highest-marked in our cohort.</p>
-      <div class="tags"><span class="tag">LoRa</span><span class="tag">Raspberry Pi</span><span class="tag">WebSockets</span><span class="tag">IoT</span><span class="tag">Disaster resilience</span></div>
+      <div class="shots">
+        <button type="button"><img src="images/projects/lora-sender.jpg" alt="Sender node: ESP32 with LoRa E32 radio and NEO-6M GPS module" loading="lazy" width="781" height="562"><span>Sender node</span></button>
+        <button type="button"><img src="images/projects/lora-sender-wiring.jpg" alt="Sender node wiring diagram: ESP32, LoRa E32 433 MHz module, NEO-6M GPS and power bank" loading="lazy" width="630" height="568"><span>Sender wiring</span></button>
+        <button type="button"><img src="images/projects/lora-gateway.jpg" alt="Gateway: Raspberry Pi connected to a LoRa module" loading="lazy" width="652" height="582"><span>Raspberry Pi gateway</span></button>
+        <button type="button"><img class="top" src="images/projects/lora-bluetooth-app.jpg" alt="Kotlin Android app connected to the ESP32 over Bluetooth" loading="lazy" width="331" height="707"><span>Bluetooth messaging app</span></button>
+      </div>
+      <div class="tags"><span class="tag">LoRa</span><span class="tag">ESP32</span><span class="tag">Raspberry Pi</span><span class="tag">WebSockets</span><span class="tag">GPS</span><span class="tag">Kotlin</span><span class="tag">IoT</span><span class="tag">Disaster resilience</span></div>
     </div>
 
     <div class="item">
@@ -244,7 +262,7 @@
         <p>A collaborative platform for organizing projects into workspaces and boards, with Kanban task management, team invitations, a deadline calendar and notifications.</p>
         <p class="role"><b>My role:</b> owned Board Management and Board Members end to end: the MongoDB models, the Express service and controller, and the React screens.</p>
         <div class="tags"><span class="tag">React</span><span class="tag">Vite</span><span class="tag">Express.js</span><span class="tag">MongoDB</span><span class="tag">Mongoose</span></div>
-        <div class="itemlinks"><a href="https://github.com/the-dilma/worksy">View code →</a></div>
+        <div class="itemlinks"><a href="#design">See UI designs →</a><a href="https://github.com/the-dilma/worksy">View code →</a></div>
       </div>
 
       <div class="item c-teal">
@@ -275,8 +293,25 @@
   <section id="design">
     <div class="sec-head">
       <span class="eyebrow">Design</span>
-      <h2>Brand &amp; graphic design for real clients</h2>
-      <p>Logos, business cards, social media posts and print material, designed with and for local business owners. Click any design to see it larger.</p>
+      <h2>UI, brand &amp; graphic design</h2>
+      <p>App interfaces designed in Figma, plus logos, business cards, social media posts and print material for local business owners. Click any design to see it larger.</p>
+    </div>
+
+    <div class="client">
+      <div class="client-head">
+        <h3>Worksy</h3>
+        <span>UI design · Board Management screens</span>
+        <a href="#projects">Project →</a>
+      </div>
+      <p class="ui-note">Designed in Figma first, then built in React.</p>
+      <div class="gallery ui">
+        <button type="button"><figure style="margin:0"><img src="images/projects/worksy-figma-boards.jpg" alt="Figma design of the Worksy boards screen" loading="lazy" width="833" height="567"><figcaption>Figma design: Boards</figcaption></figure></button>
+        <button type="button"><figure style="margin:0"><img src="images/projects/worksy-figma-task-board.jpg" alt="Figma design of the Worksy task board with columns and task cards" loading="lazy" width="828" height="537"><figcaption>Figma design: Task board</figcaption></figure></button>
+        <button type="button"><figure style="margin:0"><img src="images/projects/worksy-boards.jpg" alt="Built Worksy boards screen" loading="lazy" width="975" height="458"><figcaption>Built: Boards</figcaption></figure></button>
+        <button type="button"><figure style="margin:0"><img src="images/projects/worksy-create-board.jpg" alt="Built Worksy create board dialog" loading="lazy" width="975" height="460"><figcaption>Built: Create board</figcaption></figure></button>
+        <button type="button"><figure style="margin:0"><img src="images/projects/worksy-edit-board.jpg" alt="Built Worksy edit board dialog" loading="lazy" width="975" height="468"><figcaption>Built: Edit board</figcaption></figure></button>
+        <button type="button"><figure style="margin:0"><img src="images/projects/worksy-delete-board.jpg" alt="Built Worksy delete board confirmation" loading="lazy" width="975" height="447"><figcaption>Built: Delete confirmation</figcaption></figure></button>
+      </div>
     </div>
 
     <div class="client">
@@ -373,11 +408,11 @@
     var box = document.getElementById('lightbox');
     if (!box || !box.showModal) return;
     var img = box.querySelector('img'), cap = box.querySelector('p');
-    document.querySelectorAll('.gallery button').forEach(function(b){
+    document.querySelectorAll('.gallery button, .shots button').forEach(function(b){
       b.addEventListener('click', function(){
         var src = b.querySelector('img');
         img.src = src.src; img.alt = src.alt;
-        cap.textContent = b.querySelector('figcaption').textContent;
+        cap.textContent = b.querySelector('figcaption, span').textContent;
         box.showModal();
       });
     });
