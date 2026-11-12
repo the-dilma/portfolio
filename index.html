@@ -10,12 +10,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#14202b; --muted:#56616d; --line:#e3e6ea; --bg:#f7f6f2; --card:#ffffff;
-    --teal:#0d7a68; --teal-soft:#e2f3ef;
-    --indigo:#4b47d6; --indigo-soft:#ebeafd;
-    --coral:#e2603c; --coral-soft:#fdece6;
-    --amber:#d9930d; --amber-soft:#fdf3dc;
-    --hero-1:#0b1f2c; --hero-2:#0d4f4a; --hero-3:#2b2a7a;
+    /* Urban Chic palette: #22223B #4A4E69 #9A8C98 #C9ADA7 #F2E9E4 */
+    --ink:#22223B; --muted:#5d5a6c; --line:#e3d7d1; --bg:#F2E9E4; --card:#fcf8f6;
+    --teal:#4A4E69; --teal-soft:#e6e3ea;      /* slate */
+    --indigo:#22223B; --indigo-soft:#dfdce5;  /* navy */
+    --coral:#8c6a63; --coral-soft:#efe0db;    /* rose (darkened for text) */
+    --amber:#6e6170; --amber-soft:#e9e1e7;    /* mauve (darkened for text) */
+    --rose:#C9ADA7; --mauve:#9A8C98; --cream:#F2E9E4;
+    --hero-1:#22223B; --hero-2:#4A4E69; --hero-3:#6b6378;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -26,31 +28,31 @@
   .wrap{max-width:920px;margin:0 auto;padding:0 24px}
 
   /* Nav */
-  nav{position:sticky;top:0;background:rgba(11,31,44,.94);backdrop-filter:blur(8px);z-index:10}
+  nav{position:sticky;top:0;background:rgba(34,34,59,.95);backdrop-filter:blur(8px);z-index:10}
   nav .wrap{display:flex;gap:22px;align-items:center;height:58px;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
   nav .brand{font-family:Fraunces,Georgia,serif;font-weight:600;color:#fff;margin-right:auto;display:flex;align-items:center;gap:10px}
-  nav .brand::before{content:"";width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,#3fd1b3,var(--coral))}
-  nav a{color:#c4d0d9;font-size:14px}
+  nav .brand::before{content:"";width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--rose),var(--mauve))}
+  nav a{color:#d6cccd;font-size:14px}
   nav a:hover{color:#fff;border-bottom-color:transparent}
 
   /* Hero */
   .hero{position:relative;overflow:hidden;color:#fff;
     background:
-      radial-gradient(600px 300px at 85% 10%,rgba(226,96,60,.35),transparent 70%),
-      radial-gradient(500px 320px at 10% 100%,rgba(75,71,214,.45),transparent 70%),
+      radial-gradient(600px 300px at 85% 10%,rgba(201,173,167,.32),transparent 70%),
+      radial-gradient(500px 320px at 10% 100%,rgba(154,140,152,.35),transparent 70%),
       linear-gradient(135deg,var(--hero-1),var(--hero-2) 55%,var(--hero-3));}
   .hero::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.09) 1px,transparent 1px);background-size:22px 22px;pointer-events:none}
   .hero .wrap{position:relative;z-index:1;padding-top:84px;padding-bottom:72px}
   .eyebrow{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
-  .hero .eyebrow{color:#8ce8d4;margin-bottom:14px}
+  .hero .eyebrow{color:var(--rose);margin-bottom:14px}
   h1{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:clamp(38px,6vw,60px);line-height:1.05;margin:0 0 16px;letter-spacing:-.015em}
-  h1 span{background:linear-gradient(90deg,#8ce8d4,#ffb59c);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .tagline{font-size:18px;color:#d5e0e7;margin:0 0 28px;max-width:660px}
+  h1 span{background:linear-gradient(90deg,var(--cream),var(--rose));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .tagline{font-size:18px;color:#e6dcdb;margin:0 0 28px;max-width:660px}
   .links{display:flex;flex-wrap:wrap;gap:10px}
   .btn{display:inline-block;padding:10px 18px;border-radius:10px;font-size:14px;font-weight:600;border:1px solid rgba(255,255,255,.3);color:#fff}
   .btn:hover{background:rgba(255,255,255,.1);border-color:#fff}
-  .btn.primary{background:var(--coral);border-color:var(--coral)}
-  .btn.primary:hover{background:#c94f2d;border-color:#c94f2d}
+  .btn.primary{background:var(--rose);border-color:var(--rose);color:var(--ink)}
+  .btn.primary:hover{background:#dcc5bf;border-color:#dcc5bf;color:var(--ink)}
   .hero .interests{margin-top:30px}
 
   /* Sections */
@@ -68,14 +70,14 @@
   .chip{font-size:13px;font-weight:500;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.22)}
 
   /* Cards */
-  .item{position:relative;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:16px;box-shadow:0 1px 2px rgba(20,32,43,.04);transition:transform .15s ease,box-shadow .15s ease}
-  .item:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(20,32,43,.08)}
+  .item{position:relative;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:16px;box-shadow:0 1px 2px rgba(34,34,59,.04);transition:transform .15s ease,box-shadow .15s ease}
+  .item:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(34,34,59,.08)}
   #research .item{border-left:5px solid var(--teal)}
-  #research .item.feature{border-left-color:var(--coral);background:linear-gradient(180deg,#fff, #fffaf7)}
+  #research .item.feature{border-left-color:var(--coral);background:linear-gradient(180deg,var(--card),#f7ede9)}
   .item h3{font-size:17px;line-height:1.4;margin:0 0 4px;font-weight:600}
   .meta{font-size:14px;color:var(--muted);margin:0 0 10px}
   .status{display:inline-block;font-size:11.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:3px 10px;border-radius:999px;margin-bottom:10px;background:var(--teal-soft);color:var(--teal)}
-  .item.feature .status{background:var(--coral-soft);color:#b8452a}
+  .item.feature .status{background:var(--coral-soft);color:#7a5953}
   .item p{margin:0 0 8px}
   .role{font-size:15px}
   .role b{font-weight:600}
@@ -91,7 +93,7 @@
   .c-indigo{--c:var(--indigo);--cs:var(--indigo-soft)}
   .c-coral{--c:var(--coral);--cs:var(--coral-soft)}
   .c-teal{--c:var(--teal);--cs:var(--teal-soft)}
-  .c-amber{--c:#b47708;--cs:var(--amber-soft)}
+  .c-amber{--c:var(--amber);--cs:var(--amber-soft)}
 
   /* Design gallery */
   .client{margin-bottom:34px}
@@ -101,15 +103,15 @@
   .client-head span{font-size:14px;color:var(--muted)}
   .client-head a{font-size:14px;font-weight:600;color:var(--coral)}
   .gallery{columns:3 220px;column-gap:14px}
-  .gallery button{all:unset;cursor:zoom-in;display:block;break-inside:avoid;margin:0 0 14px;border-radius:12px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 1px 2px rgba(20,32,43,.05);transition:transform .15s ease,box-shadow .15s ease}
-  .gallery button:hover,.gallery button:focus-visible{transform:translateY(-2px);box-shadow:0 12px 26px rgba(20,32,43,.12)}
+  .gallery button{all:unset;cursor:zoom-in;display:block;break-inside:avoid;margin:0 0 14px;border-radius:12px;overflow:hidden;background:var(--card);border:1px solid var(--line);box-shadow:0 1px 2px rgba(34,34,59,.05);transition:transform .15s ease,box-shadow .15s ease}
+  .gallery button:hover,.gallery button:focus-visible{transform:translateY(-2px);box-shadow:0 12px 26px rgba(34,34,59,.12)}
   .gallery button:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
   .gallery img{width:100%;height:auto}
   .gallery figcaption{font-size:13px;color:var(--muted);padding:8px 12px 10px}
 
   .shots{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0 4px}
-  .shots button{all:unset;cursor:zoom-in;display:block;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:#fff;transition:transform .15s ease,box-shadow .15s ease}
-  .shots button:hover,.shots button:focus-visible{transform:translateY(-2px);box-shadow:0 10px 22px rgba(20,32,43,.12)}
+  .shots button{all:unset;cursor:zoom-in;display:block;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--card);transition:transform .15s ease,box-shadow .15s ease}
+  .shots button:hover,.shots button:focus-visible{transform:translateY(-2px);box-shadow:0 10px 22px rgba(34,34,59,.12)}
   .shots button:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
   .shots img{width:100%;height:110px;object-fit:cover}
   .shots span{display:block;font-size:12px;color:var(--muted);padding:6px 8px}
@@ -119,15 +121,15 @@
   .ui-note{font-size:14px;color:var(--muted);margin:-4px 0 14px}
 
   dialog.lightbox{border:0;padding:0;background:transparent;max-width:min(92vw,1100px);max-height:92vh}
-  dialog.lightbox::backdrop{background:rgba(8,16,24,.86)}
+  dialog.lightbox::backdrop{background:rgba(34,34,59,.9)}
   dialog.lightbox img{max-width:100%;max-height:84vh;width:auto;margin:0 auto;border-radius:10px}
-  dialog.lightbox p{color:#e6edf2;text-align:center;margin:10px 0 0;font-size:14px}
+  dialog.lightbox p{color:var(--cream);text-align:center;margin:10px 0 0;font-size:14px}
   dialog.lightbox .close{position:fixed;top:14px;right:18px;background:rgba(255,255,255,.14);color:#fff;border:0;border-radius:50%;width:40px;height:40px;font-size:22px;cursor:pointer}
 
   /* Education & skills */
   .edu{display:grid;grid-template-columns:160px 1fr;gap:6px 18px}
   .edu > div{margin-bottom:14px}
-  .edu .when{font-size:14px;font-weight:600;color:#a06c06;padding-top:2px}
+  .edu .when{font-size:14px;font-weight:600;color:var(--amber);padding-top:2px}
   .edu b{font-weight:600}
   .sub{color:var(--muted);font-size:15px}
   .skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:0}
@@ -138,7 +140,7 @@
   /* Contact & footer */
   .contact{background:linear-gradient(135deg,var(--hero-2),var(--hero-3));color:#fff;border-radius:18px;padding:34px 30px;text-align:left}
   .contact h2{color:#fff}
-  .contact p{color:#d5e0e7;margin:8px 0 20px}
+  .contact p{color:#e6dcdb;margin:8px 0 20px}
   footer{padding:30px 0 48px;color:var(--muted);font-size:14px}
 
   @media (max-width:560px){
@@ -174,7 +176,7 @@
   <div class="wrap">
     <span class="eyebrow">Software Engineering · Research</span>
     <h1>Hi, I'm <span>Amasha Dilmani</span></h1>
-    <p class="tagline">Third-year Software Engineering undergraduate at the University of Plymouth (NSBM Green University, Sri Lanka), working on research in edge AI, AI safety in automotive software, and low-power emergency communication.</p>
+    <p class="tagline">Final-year Software Engineering undergraduate at the University of Plymouth (NSBM Green University, Sri Lanka), working on research in edge AI, AI safety in automotive software, and low-power emergency communication.</p>
     <div class="links">
       <a class="btn primary" href="mailto:dilmanidzilva@gmail.com">Email me</a>
       <a class="btn" href="#research">See my research</a>
@@ -195,10 +197,10 @@
   <section id="about">
     <div class="sec-head">
       <span class="eyebrow">About</span>
-      <h2>Building systems that work under real constraints</h2>
+      <h2>Curious about problems, happiest building the fix</h2>
     </div>
-    <p>I build systems that have to work under real constraints: limited power, no internet, or zero tolerance for failure. My work so far spans IoT networking for disaster-prone communities, the safety of machine-learning components in vehicles, and keeping AI models reliable on small edge devices.</p>
-    <p>I am interested in how intelligent systems can be made reliable and trustworthy, and I want to grow as a researcher where computation meets real-world systems. Alongside engineering, I design brand material and websites for real clients.</p>
+    <p>I'm a final-year Software Engineering undergraduate who loves turning real-world problems into things that actually work. Some of those problems start in research: how do you keep a village talking when the mobile network goes down, or stop an AI model on a tiny device from quietly getting worse after an update? Others start with a conversation: a hotel that needs a brand people remember, or a salon getting ready to open its doors.</p>
+    <p>Whatever the problem, I work the same way: understand who it's for, sketch it out, build it, and keep testing until it holds up. That has taken me from wiring LoRa radios and writing research papers to designing interfaces in Figma and building full-stack web apps.</p>
   </section>
 
   <section id="research">
@@ -384,7 +386,7 @@
 
   <section id="contact">
     <div class="contact">
-      <span class="eyebrow" style="color:#8ce8d4">Contact</span>
+      <span class="eyebrow" style="color:var(--rose)">Contact</span>
       <h2>Let's talk</h2>
       <p>I am happy to talk about research, collaborations or internships.</p>
       <a class="btn primary" href="mailto:dilmanidzilva@gmail.com">dilmanidzilva@gmail.com</a>
