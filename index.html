@@ -116,6 +116,14 @@
   .shots img{width:100%;height:110px;object-fit:cover}
   .shots span{display:block;font-size:12px;color:var(--muted);padding:6px 8px}
   .shots img.top{object-position:top}
+  .media2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0 4px}
+  .media2 button{all:unset;cursor:zoom-in;display:block;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--card)}
+  .media2 button:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+  .media2 img,.media2 video{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:10px;background:var(--ink)}
+  .media2 span{display:none}
+  .results{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 4px}
+  .results span{font-size:13px;color:var(--muted);background:var(--cream);border:1px solid var(--line);border-radius:8px;padding:4px 10px}
+  .results b{color:var(--ink);font-weight:600}
   .gallery.ui{columns:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
   .gallery.ui button{margin:0}
   .gallery.phones{columns:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
@@ -155,6 +163,7 @@
     .gallery{columns:2 140px;column-gap:10px}
     .gallery button{margin-bottom:10px}
     .shots{grid-template-columns:repeat(2,1fr)}
+    .media2{grid-template-columns:1fr}
     .contact{padding:26px 20px}
   }
   @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
@@ -219,6 +228,20 @@
       <p>This framework tests a candidate model on the device before committing it. It compares accuracy, confidence and latency against the running model on a small held-out validation set, and rolls back automatically if the new model regresses. The evaluation injects network loss, power loss and deliberately degraded models, and compares validation strategies against an install-only baseline.</p>
       <p class="role"><b>My role:</b> individual project. I am designing and building the framework and running the evaluation.</p>
       <div class="tags"><span class="tag">Edge AI</span><span class="tag">MLOps</span><span class="tag">OTA updates</span><span class="tag">Raspberry Pi</span><span class="tag">Python</span></div>
+    </div>
+
+    <div class="item">
+      <span class="status">Introduction to IoT module · Team of 4 · 2026 · Graded 70%</span>
+      <h3>Edge AI Learning Companion</h3>
+      <p>An offline, bilingual voice-and-vision learning companion robot that runs entirely on a Raspberry Pi 4B. We deployed an open-source AI agent (<a href="https://github.com/brenpoly/be-more-agent">be-more-agent</a>) that combines a local LLM, Whisper speech-to-text, wake-word detection, Moondream vision and Piper text-to-speech, so no voice or camera data leaves the device.</p>
+      <p class="role"><b>My role:</b> built and wired the robot hardware with a teammate, and set up bilingual speech recognition. The team measured latency and accuracy for every stage of the pipeline.</p>
+      <div class="results"><span>Wake word <b>90%</b></span><span>Primary-language transcription <b>98%</b></span><span>Second language <b>71%</b></span><span>Tool use <b>87%</b></span></div>
+      <div class="media2">
+        <button type="button"><img src="images/projects/learning-companion-robot.jpg" alt="The learning companion robot: a cardboard body with a touchscreen face, camera and Raspberry Pi inside" loading="lazy" width="1149" height="1240"><span>The learning companion robot</span></button>
+        <video src="media/desk-companion.mp4" controls muted playsinline preload="metadata" aria-label="Video of the learning companion robot in action"></video>
+      </div>
+      <div class="tags"><span class="tag">Edge AI</span><span class="tag">Local LLM</span><span class="tag">Whisper</span><span class="tag">Raspberry Pi</span><span class="tag">Speech recognition</span><span class="tag">Computer vision</span></div>
+      <div class="itemlinks"><a href="https://github.com/brenpoly/be-more-agent">Original be-more-agent repo →</a></div>
     </div>
 
     <div class="item">
@@ -430,7 +453,7 @@
     var box = document.getElementById('lightbox');
     if (!box || !box.showModal) return;
     var img = box.querySelector('img'), cap = box.querySelector('p');
-    document.querySelectorAll('.gallery button, .shots button').forEach(function(b){
+    document.querySelectorAll('.gallery button, .shots button, .media2 button').forEach(function(b){
       b.addEventListener('click', function(){
         var src = b.querySelector('img');
         img.src = src.src; img.alt = src.alt;
